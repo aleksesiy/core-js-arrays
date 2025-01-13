@@ -129,7 +129,10 @@ function getStringsLength(arr) {
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
 function getAverage(arr) {
-  return arr.reduce((acc, curr) => acc + curr, 0) / arr.length;
+  return arr.length === 0
+    ? 0
+    : Math.round((arr.reduce((sum, num) => sum + num, 0) / arr.length) * 100) /
+        100;
 }
 
 /**
@@ -142,8 +145,9 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const len = arr[0].length;
+  return arr.every((x) => x.length === len);
 }
 
 /**
@@ -157,8 +161,8 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((x) => x === arr.indexOf(x));
 }
 
 /**
@@ -404,8 +408,10 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return Array.from({ length: n }, (el1, i) =>
+    Array.from({ length: n }, (el2, j) => (i === j ? 1 : 0))
+  );
 }
 
 /**
@@ -419,8 +425,8 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers.filter((x) => x % 2 === 0);
 }
 
 /**
